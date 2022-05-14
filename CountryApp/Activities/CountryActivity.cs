@@ -13,7 +13,7 @@ namespace CountryApp.Activities
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.contry_information);
+            SetContentView(Resource.Layout.country_information);
 
             // Т.к сериализатор НЕ возвращает null - имеет смысл проверить поля на валидность
             // и вывести сообщение об ошибке, если проверка не пройдёт.

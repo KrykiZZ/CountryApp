@@ -13,11 +13,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/search_view"
-        android:queryHint="Type to search."/>
+        android:queryHint="Type to search." />
 
     <ListView
+        android:layout_marginTop="45dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/countries" />
 
 </RelativeLayout>

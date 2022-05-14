@@ -9688,7 +9688,7 @@ namespace CountryApp
 			public const int content_main = 2131427359;
 			
 			// aapt resource value: 0x7F0B0020
-			public const int contry_information = 2131427360;
+			public const int country_information = 2131427360;
 			
 			// aapt resource value: 0x7F0B0021
 			public const int custom_dialog = 2131427361;

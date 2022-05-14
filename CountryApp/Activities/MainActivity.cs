@@ -21,7 +21,7 @@ namespace CountryApp.Activities
         private Android.Widget.ListView _countriesWidget;
         private Android.Widget.ArrayAdapter _adapter;
 
-        private SearchView _searchView;
+        private Android.Widget.SearchView _searchView;
 
         protected override async void OnCreate(Bundle savedInstanceState)
         {
@@ -48,13 +48,18 @@ namespace CountryApp.Activities
             _countriesWidget.Adapter = _adapter;
             _countriesWidget.ItemClick += Countries_ItemClick;
 
-            _searchView = FindViewById<SearchView>(Resource.Id.search_view);
-            _searchView.QueryTextChange += Search_QueryTextChange;
+            _searchView = FindViewById<Android.Widget.SearchView>(Resource.Id.search_view);
+            _searchView.QueryTextChange += _searchView_QueryTextChange;
         }
 
-        private void Search_QueryTextChange(object sender, SearchView.QueryTextChangeEventArgs e)
+        private void SearchButton_Click(object sender, System.EventArgs e)
         {
+            _searchView.DispatchSetActivated(true);
+        }
 
+        private void _searchView_QueryTextChange(object sender, Android.Widget.SearchView.QueryTextChangeEventArgs e)
+        {
+            _adapter.Filter.InvokeFilter(e.NewText);
         }
 
         private void Countries_ItemClick(object sender, Android.Widget.AdapterView.ItemClickEventArgs e)
@@ -74,7 +79,7 @@ namespace CountryApp.Activities
             // Отписываемся от события при выгрузке Activity, чтобы избежать утечки памяти
             // ввиду использования в системе нескольких GC.
             _countriesWidget.ItemClick -= Countries_ItemClick;
-            _searchView.QueryTextChange -= Search_QueryTextChange;
+            _searchView.QueryTextChange -= _searchView_QueryTextChange;
             base.OnDestroy();
         }
 
